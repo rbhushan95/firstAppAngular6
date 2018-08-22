@@ -13,7 +13,11 @@
 
     </div>
 
-    <div class="col-8" style="color: red" >
+    <div class="col-8" style="color: red">
+      <div>
+        2 multiplied by 10:- {{ 2 | multiplyBy :10}}
+
+      </div>
       <input type="button" value="click me" (click)='callMe()'>
       <router-outlet></router-outlet>
     </div>

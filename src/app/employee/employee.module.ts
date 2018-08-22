@@ -7,6 +7,7 @@ import { AddemployeeComponent } from './addemployee/addemployee.component';
 import { EditemployeeComponent } from './editemployee/editemployee.component';
 import { EmployeeService } from './employee.service';
 import { JsonpModule } from '@angular/http';
+import { MultiplyerPipe } from '../common/pipes/multiplierPipe';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { JsonpModule } from '@angular/http';
     EmployeeRoutingModule
   ],
   providers: [EmployeeService],
-  declarations: [EmpdashboardComponent, AddemployeeComponent, EditemployeeComponent],
+  declarations: [EmpdashboardComponent, AddemployeeComponent, EditemployeeComponent , MultiplyerPipe],
   exports: [EmpdashboardComponent, AddemployeeComponent, EditemployeeComponent]
 })
 export class EmployeeModule { }

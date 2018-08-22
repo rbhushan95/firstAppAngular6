@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <a class="navbar-brand">Employee DashBoard</a>
+      <ul>
+        <li>
+          <a class="nav-link" routerLink="/employee/add" routerLinkActive="active">Add Employee</a>
+        </li>
+        <li>
+          <a class="nav-link" routerLink="/employee/edit" routerLinkActive="active">Edit Employee</a>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="col-8" style="color: red" >
+      <input type="button" value="click me" (click)='callMe()'>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

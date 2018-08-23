@@ -1,4 +1,4 @@
-import { PipeTransform, Pipe } from '@angular/Core';
+import { PipeTransform, Pipe } from '@angular/core';
 @Pipe({
   name: 'multiplyBy',
   pure: true

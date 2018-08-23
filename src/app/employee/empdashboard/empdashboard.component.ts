@@ -15,7 +15,7 @@ export class EmpdashboardComponent implements OnInit {
   callMe = () => {
     //  console.log(this.employeeService.getEmployeeList());
     // console.log(this.employeeService.getValueByBasicCall());
-    console.log(this.greatestCommonFactor.byDivisionMethod(14 , 48));
-    console.log(this.greatestCommonFactor.bySubstractMethod(14 , 48));
+    this.greatestCommonFactor.byDivisionMethod(14 , 48);
+    this.greatestCommonFactor.bySubstractMethod(14 , 48);
   }
 }

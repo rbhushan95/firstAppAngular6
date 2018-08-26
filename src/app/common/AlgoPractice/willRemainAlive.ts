@@ -10,41 +10,51 @@ export class WillRemainAlive {
     }
     this.intermediateArray = this.initialArray;
   }
-  getThePersonNumber() {}
-  // shooting start at position in any case
-  basicShooting() {
-    if (this.initialArray.length >= 1) {
-      while (this.intermediateArray.length !== 1) {
-        if (this.callOddMethod) {
-          this.intermediateArray = this.oddPositionData(this.intermediateArray);
-          this.callOddMethod = !this.callOddMethod;
-        } else {
-          this.intermediateArray = this.evenPositionData(this.intermediateArray);
-          this.callOddMethod = !this.callOddMethod;
-        }
-      }
-      console.log(this.intermediateArray);
+  private isOdd(num) {
+    return num % 2;
+  }
+  callTheNewLogic() {
+    while (this.intermediateArray.length > 1) {
+      this.intermediateArray = this.byNewLogic(
+        this.intermediateArray,
+        this.shootPosition
+      );
+      console.log('Alive persons are ' + this.intermediateArray.toString());
     }
   }
-
- private oddPositionData(numberArray: number[]): number[] {
+  private byNewLogic = (
+    numberArray: number[],
+    initialPosition: number
+  ): number[] => {
     const resultArray: number[] = [];
-    for (let i = 0; i < numberArray.length; i++) {
-      if (i % 2 !== 0) {
+    if (initialPosition > 1) {
+      for (let i = 0; i < numberArray.length; i++) {
         resultArray.push(numberArray[i]);
+        i === initialPosition || i > initialPosition ? (i = i + 1) : (i = i);
+      }
+    } else {
+      for (let i = initialPosition; i < numberArray.length; i++) {
+        resultArray.push(numberArray[i]);
+        i = i + 1;
       }
     }
-    console.log('from odd:-' + resultArray);
+    numberArray[numberArray.length - 1] !== resultArray[resultArray.length - 1]
+      ? (this.shootPosition = 0)
+      : (this.shootPosition = 1);
+    // this.shootPosition = this.getTheNextInitialPosition(
+    //   numberArray[initialPosition],
+    //   numberArray[numberArray.length - 1]
+    // );
     return resultArray;
   }
-  private evenPositionData(numberArray: number[]): number[] {
-    const resultArray: number[] = [];
-    for (let i = 0; i < numberArray.length; i++) {
-      if (i % 2 === 0) {
-        resultArray.push(numberArray[i]);
-      }
+  getTheNextInitialPosition = (
+    currentinitialPosition: number,
+    currentArrayLength: number
+  ): number => {
+    if (this.isOdd(currentinitialPosition) && this.isOdd(currentArrayLength)) {
+      return 1;
+    } else {
+      return 0;
     }
-    console.log('from even:-' + resultArray);
-    return resultArray;
   }
 }

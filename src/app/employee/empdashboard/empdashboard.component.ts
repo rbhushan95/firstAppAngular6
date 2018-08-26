@@ -14,7 +14,7 @@ export class EmpdashboardComponent implements OnInit {
   constructor(private employeeService: EmployeeService) {}
   greatestCommonFactor: GreatestCommonFactor = new GreatestCommonFactor();
   kidGiftAlgo: KidGiftAlgo = new KidGiftAlgo();
-  willRemainAlive: WillRemainAlive = new WillRemainAlive(100, 1);
+  willRemainAlive: WillRemainAlive = new WillRemainAlive(10, 3);
   ngOnInit() {}
   callMe = () => {
     //  console.log(this.employeeService.getEmployeeList());
@@ -27,6 +27,6 @@ export class EmpdashboardComponent implements OnInit {
     //  console.log(this.kidGiftAlgo.getTheLastGiftHolder(3, 2, 1));
     //  console.log(this.kidGiftAlgo.getTheLastGiftHolder(3, 2, 3));
     //  console.log(this.kidGiftAlgo.getTheLastGiftHolder(3, 1, 1));
-  this.willRemainAlive.basicShooting();
+  this.willRemainAlive.callTheNewLogic();
   }
 }

@@ -2,7 +2,7 @@ export class WillRemainAlive {
   initialArray: number[] = [];
   intermediateArray: number[] = [];
   shootPosition: number;
-  callOddMethod = true;
+  firstTimeCall = true;
   constructor(numberOfPerson: number, firstShooterPosition: number) {
     this.shootPosition = firstShooterPosition;
     for (let index = 1; index <= numberOfPerson; index++) {
@@ -15,6 +15,7 @@ export class WillRemainAlive {
   }
   callTheNewLogic() {
     while (this.intermediateArray.length > 1) {
+      // console.log(this.shootPosition);
       this.intermediateArray = this.byNewLogic(
         this.intermediateArray,
         this.shootPosition
@@ -32,29 +33,24 @@ export class WillRemainAlive {
         resultArray.push(numberArray[i]);
         i === initialPosition || i > initialPosition ? (i = i + 1) : (i = i);
       }
+      this.firstTimeCall = false;
+    } else if (this.firstTimeCall) {
+      for (let i = 0; i < numberArray.length; i++) {
+        resultArray.push(numberArray[i]);
+        i === initialPosition || i > initialPosition ? (i = i + 1) : (i = i);
+      }
+      this.firstTimeCall = false;
     } else {
       for (let i = initialPosition; i < numberArray.length; i++) {
         resultArray.push(numberArray[i]);
         i = i + 1;
       }
     }
-    numberArray[numberArray.length - 1] !== resultArray[resultArray.length - 1]
-      ? (this.shootPosition = 0)
-      : (this.shootPosition = 1);
-    // this.shootPosition = this.getTheNextInitialPosition(
-    //   numberArray[initialPosition],
-    //   numberArray[numberArray.length - 1]
-    // );
+
+    numberArray[numberArray.length - 1] === resultArray[resultArray.length - 1]
+      ? (this.shootPosition = 1)
+      : (this.shootPosition = 0);
+
     return resultArray;
-  }
-  getTheNextInitialPosition = (
-    currentinitialPosition: number,
-    currentArrayLength: number
-  ): number => {
-    if (this.isOdd(currentinitialPosition) && this.isOdd(currentArrayLength)) {
-      return 1;
-    } else {
-      return 0;
-    }
   }
 }

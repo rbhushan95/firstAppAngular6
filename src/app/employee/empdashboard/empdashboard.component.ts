@@ -14,7 +14,7 @@ export class EmpdashboardComponent implements OnInit {
   constructor(private employeeService: EmployeeService) {}
   greatestCommonFactor: GreatestCommonFactor = new GreatestCommonFactor();
   kidGiftAlgo: KidGiftAlgo = new KidGiftAlgo();
-  willRemainAlive: WillRemainAlive = new WillRemainAlive(10, 3);
+  willRemainAlive: WillRemainAlive = new WillRemainAlive(19, 0);
   ngOnInit() {}
   callMe = () => {
     //  console.log(this.employeeService.getEmployeeList());
